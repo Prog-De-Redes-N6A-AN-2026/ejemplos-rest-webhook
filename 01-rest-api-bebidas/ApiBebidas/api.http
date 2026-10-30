@@ -1,0 +1,30 @@
+@host = http://localhost:5000
+
+### Crear una bebida
+POST {{host}}/api/v1/bebidas
+Content-Type: application/json
+
+{
+  "tipo": "refresco",
+  "nombre": "Tónica",
+  "descripcion": "Bebida gasificada amarga"
+}
+
+### Obtener todas
+GET {{host}}/api/v1/bebidas
+
+### Obtener por id
+GET {{host}}/api/v1/bebidas/1
+
+### Reemplazar una bebida
+PUT {{host}}/api/v1/bebidas/1
+Content-Type: application/json
+
+{
+  "tipo": "refresco",
+  "nombre": "Tónica sin azúcar",
+  "descripcion": "Nueva representación del recurso"
+}
+
+### Eliminar
+DELETE {{host}}/api/v1/bebidas/1

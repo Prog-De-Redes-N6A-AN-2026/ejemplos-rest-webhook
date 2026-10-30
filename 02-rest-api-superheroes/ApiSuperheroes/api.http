@@ -1,0 +1,127 @@
+@host = https://localhost:7001
+@token = pdr-2026
+
+### 1. POST sin token -> 401 Unauthorized
+POST {{host}}/api/v1/heroes
+Content-Type: application/json
+
+{
+  "nombreReal": "Bruce Wayne",
+  "nombre": "Batman",
+  "edad": 40,
+  "creadores": ["Bob Kane", "Bill Finger"]
+}
+
+### 2. Crear Batman -> 201 Created, Location y ETag "v1"
+POST {{host}}/api/v1/heroes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombreReal": "Bruce Wayne",
+  "nombre": "Batman",
+  "edad": 40,
+  "creadores": ["Bob Kane", "Bill Finger"]
+}
+
+### 3. Crear Superman
+POST {{host}}/api/v1/heroes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombreReal": "Clark Kent",
+  "nombre": "Superman",
+  "edad": 35,
+  "creadores": ["Jerry Siegel", "Joe Shuster"]
+}
+
+### 4. Crear Spider-Man
+POST {{host}}/api/v1/heroes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombreReal": "Peter Parker",
+  "nombre": "Spider-Man",
+  "edad": 24,
+  "creadores": ["Stan Lee", "Steve Ditko"]
+}
+
+### 5. Obtener todos
+GET {{host}}/api/v1/heroes
+
+### 6. Filtrar por parte del nombre
+GET {{host}}/api/v1/heroes?nombre=man
+
+### 7. Filtrar por edad y ordenar
+GET {{host}}/api/v1/heroes?edadMinima=30&ordenarPor=edad&descendente=true
+
+### 8. Filtrar por creador
+GET {{host}}/api/v1/heroes?creador=Bob%20Kane
+
+### 9. Paginar
+GET {{host}}/api/v1/heroes?pagina=1&tamanioPagina=2&ordenarPor=nombre
+
+### 10. Filtro inválido -> 400 mediante IExceptionHandler
+GET {{host}}/api/v1/heroes?tamanioPagina=100
+
+### 11. Obtener Batman -> observar ETag "v1" y Cache-Control
+GET {{host}}/api/v1/heroes/1
+
+### 12. GET condicional -> si Batman sigue en v1, 304 Not Modified
+GET {{host}}/api/v1/heroes/1
+If-None-Match: "v1"
+
+### 13. Actualizar Batman con la versión correcta -> 204 y nuevo ETag "v2"
+PUT {{host}}/api/v1/heroes/1
+Authorization: Bearer {{token}}
+If-Match: "v1"
+Content-Type: application/json
+
+{
+  "nombreReal": "Bruce Wayne",
+  "nombre": "Batman",
+  "edad": 41,
+  "creadores": ["Bob Kane", "Bill Finger"]
+}
+
+### 14. Intentar actualizar usando el ETag viejo -> 412 Precondition Failed
+PUT {{host}}/api/v1/heroes/1
+Authorization: Bearer {{token}}
+If-Match: "v1"
+Content-Type: application/json
+
+{
+  "nombreReal": "Bruce Wayne",
+  "nombre": "Batman",
+  "edad": 42,
+  "creadores": ["Bob Kane", "Bill Finger"]
+}
+
+### 15. Actualizar con la versión actual -> 204 y ETag "v3"
+PUT {{host}}/api/v1/heroes/1
+Authorization: Bearer {{token}}
+If-Match: "v2"
+Content-Type: application/json
+
+{
+  "nombreReal": "Bruce Wayne",
+  "nombre": "Batman",
+  "edad": 42,
+  "creadores": ["Bob Kane", "Bill Finger"]
+}
+
+### 16. Recurso inexistente -> 404 mediante IExceptionHandler
+GET {{host}}/api/v1/heroes/999
+
+### 17. Eliminar sin token -> 401
+DELETE {{host}}/api/v1/heroes/1
+
+### 18. Eliminar con token -> 204
+DELETE {{host}}/api/v1/heroes/1
+Authorization: Bearer {{token}}
+
+### 19. Repetir DELETE -> 404; el recurso sigue eliminado
+DELETE {{host}}/api/v1/heroes/1
+Authorization: Bearer {{token}}

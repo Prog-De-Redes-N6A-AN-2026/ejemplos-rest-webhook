@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSuperheroes", "ApiSuperheroes\ApiSuperheroes.csproj", "{C3A5ADE7-C72D-44F1-BF36-4C649EA8BF0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Superheroes.Dominio", "Superheroes.Dominio\Superheroes.Dominio.csproj", "{A600458E-98CB-407B-AEA5-55071AD1B3BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Superheroes.Aplicacion", "Superheroes.Aplicacion\Superheroes.Aplicacion.csproj", "{3238521D-A999-49DB-AA47-CEBB02185C06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Superheroes.Infraestructura", "Superheroes.Infraestructura\Superheroes.Infraestructura.csproj", "{CAC7A636-322D-43CB-9FC3-487C1BBB7CD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A5ADE7-C72D-44F1-BF36-4C649EA8BF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A5ADE7-C72D-44F1-BF36-4C649EA8BF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A5ADE7-C72D-44F1-BF36-4C649EA8BF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A5ADE7-C72D-44F1-BF36-4C649EA8BF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A600458E-98CB-407B-AEA5-55071AD1B3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A600458E-98CB-407B-AEA5-55071AD1B3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A600458E-98CB-407B-AEA5-55071AD1B3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A600458E-98CB-407B-AEA5-55071AD1B3BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3238521D-A999-49DB-AA47-CEBB02185C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3238521D-A999-49DB-AA47-CEBB02185C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3238521D-A999-49DB-AA47-CEBB02185C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3238521D-A999-49DB-AA47-CEBB02185C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC7A636-322D-43CB-9FC3-487C1BBB7CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC7A636-322D-43CB-9FC3-487C1BBB7CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC7A636-322D-43CB-9FC3-487C1BBB7CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC7A636-322D-43CB-9FC3-487C1BBB7CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
